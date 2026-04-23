@@ -4,12 +4,21 @@
     val penulis: String,
     val penerbit: String,
     val tahunTerbit: Int,
-    var stok: Int
+    stokAwal: Int
 ) {
-    fun kurangiStok(jumlah: Int) {
+    var stok: Int = stokAwal
+        private set
+
+    val isTersedia: Boolean
+        get() = stok > 0
+
+    fun kurangiStok(jumlah: Int): Boolean {
+        if (jumlah <= 0 || stok < jumlah) return false
         stok -= jumlah
+        return true
     }
     fun tambahStok(jumlah: Int) {
-        stok += jumlah
+        if (jumlah > 0) stok += jumlah
     }
+    fun getInfoBuku(): String = "[]  - Stok: "
 }
