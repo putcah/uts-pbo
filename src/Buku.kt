@@ -13,12 +13,20 @@
         get() = stok > 0
 
     fun kurangiStok(jumlah: Int): Boolean {
-        if (jumlah <= 0 || stok < jumlah) return false
+        if (jumlah <= 0 || stok < jumlah) {
+            return false
+        }
         stok -= jumlah
         return true
     }
+
     fun tambahStok(jumlah: Int) {
-        if (jumlah > 0) stok += jumlah
+        if (jumlah > 0) {
+            stok += jumlah
+        }
     }
-    fun getInfoBuku(): String = "[]  - Stok: "
+
+    fun getInfoBuku(): String {
+        return "[$idBuku] $judul oleh $penulis, $penerbit ($tahunTerbit) - Stok: $stok"
+    }
 }
